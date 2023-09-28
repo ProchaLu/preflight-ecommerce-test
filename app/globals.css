@@ -4,19 +4,27 @@
   box-sizing: border-box;
 }
 
-header {
+header,
+footer {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  position: fixed;
+  background-color: white;
+}
+
+header {
+  top: 0;
   border-bottom: 2px solid black;
 }
 
 footer {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
+  bottom: 0;
   border-top: 2px solid black;
+}
+
+main {
+  margin: 100px 0;
 }
