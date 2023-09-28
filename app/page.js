@@ -1,14 +1,18 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import styles from './page.module.css';
+import heroSectionImage from '../public/images/heroSectionImage.jpg';
+import styles from './page.module.scss';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div>
-        <h1>Welcome to Covfefe</h1>
-        <div>HEROSECTION</div>
-        <Link href="/products">Shop our products</Link>
-      </div>
-    </main>
+    <div>
+      <h1>Welcome to Covfefe</h1>
+      <Image
+        src={heroSectionImage}
+        alt="view of roasted coffee beans"
+        width={1500}
+      />
+      <Link href="/products">Shop our products</Link>
+    </div>
   );
 }

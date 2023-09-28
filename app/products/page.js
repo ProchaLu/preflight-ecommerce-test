@@ -1,5 +1,7 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { getProducts } from '../../database/products';
+import styles from './page.module.scss';
 
 export const metadata = {
   title: 'Products',
@@ -11,25 +13,30 @@ export default function page() {
 
   return (
     <div>
-      <h1>These are my products</h1> {/*h1 is necessary for drone */}
-      {products.map((product) => {
-        return (
-          <div key={`product-div-${product.id}`}>
-            <Link
-              href={`/products/${product.id}`}
-              data-test-id={`product-${product.id}`}
+      <h1>These are my products</h1> {/* h1 is necessary for drone */}
+      <section className={styles.productsSection}>
+        {products.map((product) => {
+          return (
+            <div
+              key={`product-div-${product.id}`}
+              className={styles.productCard}
             >
-              {product.name}
-            </Link>
-            {/* <Image
-          src={`/images/${product.name}.png`}
-          alt={product.firstName}
-          width={200}
-          height={200}
-        /> */}
-          </div>
-        );
-      })}
+              <Link
+                href={`/products/${product.id}`}
+                data-test-id={`product-${product.id}`}
+              >
+                <Image
+                  src={`/images/productImages/${product.name}.png`}
+                  alt={product.name}
+                  width={300}
+                  height={300}
+                />
+                <p>{product.name}</p>
+              </Link>
+            </div>
+          );
+        })}
+      </section>
     </div>
   );
 }
