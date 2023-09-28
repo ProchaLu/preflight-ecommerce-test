@@ -37,11 +37,17 @@ export default function RootLayout({ children }) {
             COVFEFE
           </div>
           {/* searchbar */}
-          <Link href="/cart">Your cart: {quantityInCart}</Link>
+          <Link href="/cart" data-test-id="cart-link">
+            Your cart: <span data-test-id="cart-count">{quantityInCart}</span>
+          </Link>
         </header>
-        {children}
+        <main>{children}</main>
         <footer>
           <Link href="/">Impressum</Link>
+          <div>
+            Images designed by{' '}
+            <Link href="https://www.freepik.com/">Freepik</Link>
+          </div>
           <div>2023 Covfefe</div>
         </footer>
       </body>
