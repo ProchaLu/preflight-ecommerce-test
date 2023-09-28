@@ -1,4 +1,5 @@
 import React from 'react';
+import CheckOutForm from './CheckOutForm';
 
 export const metadata = {
   title: 'Check out',
@@ -6,5 +7,10 @@ export const metadata = {
 };
 
 export default function Checkout() {
-  return <div>This is checkout </div>;
+  return (
+    <div>
+      <p>This is checkout </p>
+      <CheckOutForm />
+    </div>
+  );
 }
