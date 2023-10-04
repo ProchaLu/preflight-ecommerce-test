@@ -1,0 +1,25 @@
+.input {
+  background-color: #f4f3f2;
+  border: 0.5px solid rgba(93, 107, 98, 0.5);
+  padding: 5px;
+  width: 40px;
+  margin-right: 20px;
+  text-align: center;
+
+  &:focus {
+    outline-color: rgba(93, 107, 98, 0.5);
+  }
+}
+
+.cartButton {
+  background-color: lightgrey;
+  border: none;
+  padding: 5px;
+  font-family: Nova Mono, 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+
+  &:hover {
+    background-color: rgba(93, 107, 98, 0.5);
+  }
+}
