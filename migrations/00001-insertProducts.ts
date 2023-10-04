@@ -1,4 +1,4 @@
-import 'server-only';
+import { Sql } from 'postgres';
 
 const products = [
   {
@@ -102,10 +102,21 @@ const products = [
   },
 ];
 
-export function getProducts() {
-  return products;
+export async function up(sql: Sql) {
+  for (const product of products) {
+    await sql`
+      INSERT INTO products
+        (name, type, origin, flavour_profile, price, description)
+      VALUES
+        (${product.name}, ${product.type}, ${product.origin}, ${product.flavourProfile}, ${product.price}, ${product.description})
+  `;
+  }
 }
 
-export function getProduct(id) {
-  return products.find((product) => product.id === id);
+export async function down(sql: Sql) {
+  for (const product of products) {
+    await sql`
+      DELETE FROM products WHERE id = ${product.id}
+    `;
+  }
 }
