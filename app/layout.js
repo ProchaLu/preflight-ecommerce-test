@@ -1,7 +1,8 @@
 import './globals.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import coffeeLogo from '../public/images/coffee-logo.png';
+import coffeeLogo from '../public/images/coffee-beans.png';
+import shoppingCartIcon from '../public/images/shopping-cart.svg';
 import { getCookie } from '../util/cookies';
 import { parseJson } from '../util/json';
 import CookieBanner from './CookieBanner';
@@ -22,33 +23,54 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
-        <CookieBanner />
+        <CookieBanner className="cookies" />
         <header>
-          <nav>
-            <Link href="/">Home</Link>
-            <Link href="/products" data-test-id="products-link">
+          <nav className="navBar">
+            <Link className="hover-underline-animation" href="/">
+              Home
+            </Link>
+            <Link
+              className="hover-underline-animation"
+              href="/products"
+              data-test-id="products-link"
+            >
               Products
             </Link>
             {/* wäre cool wenn das so runterfahren könnte & schon die einzelnen produkte anzeigt */}
           </nav>
-          <div>
+          <Link className="logo" href="/">
             <Image src={coffeeLogo} alt="store-logo" width={50} height={50} />
             COVFEFE
-          </div>
-          {/* searchbar */}
-          <Link href="/cart" data-test-id="cart-link">
-            Your cart: <span data-test-id="cart-count">{quantityInCart}</span>
           </Link>
+          {/* searchbar */}
+          <div className="cartWrapper">
+            <Link
+              className="hover-underline-animation"
+              href="/cart"
+              data-test-id="cart-link"
+            >
+              <Image src={shoppingCartIcon} />
+              <span data-test-id="cart-count"> {quantityInCart}</span>
+            </Link>
+          </div>
         </header>
         <main>{children}</main>
         <footer>
           <Link href="/">Impressum</Link>
-          <div>
+          <div className="attribution">
             Images designed by{' '}
             <Link href="https://www.freepik.com/">Freepik</Link>
           </div>
-          <div>2023 Covfefe</div>
+          <div className="foundingYear">2023 Covfefe</div>
         </footer>
       </body>
     </html>

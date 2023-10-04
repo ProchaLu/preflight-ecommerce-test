@@ -1,0 +1,44 @@
+.header {
+  font-family: Nova Mono, 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.cartSection {
+  margin: 20px;
+
+  li {
+    list-style-type: '-';
+    padding: 20px;
+  }
+}
+
+.emptyCart {
+  // font-family: Nova Mono, 'Courier New', Courier, monospace;
+  // text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  color: rgba(93, 107, 98, 0.5);
+  margin: 20px;
+}
+
+.total {
+  border-top: 1px solid rgba(93, 107, 98, 0.5);
+  border-bottom: 1px solid rgba(93, 107, 98, 0.5);
+  padding: 20px;
+}
+
+.checkoutButton {
+  background-color: lightgrey;
+  border: none;
+  padding: 0 5px;
+  font-family: Nova Mono, 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin: 20px;
+
+  &:hover {
+    background-color: rgba(93, 107, 98, 0.5);
+  }
+}

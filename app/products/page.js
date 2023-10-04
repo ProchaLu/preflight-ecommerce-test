@@ -8,12 +8,15 @@ export const metadata = {
   description: "Covfefe's products",
 };
 
-export default function page() {
-  const products = getProducts();
+export default async function page() {
+  const products = await getProducts();
 
   return (
-    <div>
-      <h1>These are my products</h1> {/* h1 is necessary for drone */}
+    <div className={styles.pageContent}>
+      <div className={styles.headerWrapper}>
+        <h1 className={styles.header}>Let us spill our beans...</h1>
+        {/* Option to have filter here */}
+      </div>
       <section className={styles.productsSection}>
         {products.map((product) => {
           return (
@@ -24,6 +27,7 @@ export default function page() {
               <Link
                 href={`/products/${product.id}`}
                 data-test-id={`product-${product.id}`}
+                className={styles.zoom}
               >
                 <Image
                   src={`/images/productImages/${product.name}.png`}
@@ -31,7 +35,9 @@ export default function page() {
                   width={300}
                   height={300}
                 />
-                <p>{product.name}</p>
+                <div className={styles.productNameAndPrice}>
+                  <p>{product.name}</p> <p>{product.price}€</p>
+                </div>
               </Link>
             </div>
           );

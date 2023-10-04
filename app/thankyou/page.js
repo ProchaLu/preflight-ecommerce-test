@@ -1,4 +1,4 @@
-import React from 'react';
+import styles from './page.module.scss';
 
 export const metadata = {
   title: 'Thank you for your order',
@@ -6,5 +6,5 @@ export const metadata = {
 };
 
 export default function ThankYou() {
-  return <div>Thank you for shopping with us!</div>;
+  return <h1 className={styles.header}>Thank you for shopping with us!</h1>;
 }

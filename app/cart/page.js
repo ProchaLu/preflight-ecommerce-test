@@ -1,8 +1,11 @@
 import Link from 'next/link';
-import React from 'react';
 import { getProducts } from '../../database/products';
 import { getCookie } from '../../util/cookies';
 import { parseJson } from '../../util/json';
+import AddOneProduct from './AddOneProduct';
+import styles from './page.module.scss';
+import RemoveOneProduct from './RemoveOneProduct';
+import SetQuantityToZeroButton from './SetQuantityToZeroButton';
 
 export const metadata = {
   title: 'Shopping cart',
@@ -13,37 +16,41 @@ export function renderTotalAmount(total) {
   if (total > 0) {
     return (
       <div>
-        <p>
+        <p className={styles.total}>
           Total: <span data-test-id="cart-total">{total}</span>
           Euro
         </p>
-        <Link href="/checkout">Proceed to Checkout</Link>
+        <Link className={styles.checkoutButton} href="/checkout">
+          Proceed to Checkout
+        </Link>
       </div>
     );
   } else {
-    return 'Your shopping cart is empty';
+    return (
+      <p className={styles.emptyCart}>Your shopping cart is currently empty</p>
+    );
   }
 }
 
-export default function Cart() {
+export default async function Cart() {
   let total = 0;
   const cartCookies = getCookie('cart');
 
   const cart = !cartCookies ? [] : parseJson(cartCookies);
+  const products = await getProducts();
 
-  const mergeCookiesWithProducts = getProducts().map((product) => {
+  const mergeCookiesWithProducts = products.map((product) => {
     const matchingWithProduct = cart.find((item) => product.id === item.id);
     return { ...product, quantity: matchingWithProduct?.quantity };
   });
 
   return (
-    <>
-      <p>This is your shopping cart:</p>
+    <section className={styles.cartSection}>
+      <h1 className={styles.header}>Shopping cart:</h1>
       <ul>
         {mergeCookiesWithProducts.map((product) => {
           if (product.quantity) {
             total += product.quantity * product.price;
-            console.log(total);
 
             return (
               <li
@@ -51,10 +58,13 @@ export default function Cart() {
                 data-test-id={`cart-product-${product.id}`}
               >
                 {product.name} - Quantity:{' '}
+                <AddOneProduct productId={product.id} />
                 <span data-test-id={`cart-product-quantity-${product.id}`}>
                   {product.quantity}
                 </span>
-                Subtotal: {product.quantity * product.price} REMOVE-BUTTON
+                <RemoveOneProduct productId={product.id} />
+                Subtotal: {product.quantity * product.price}
+                <SetQuantityToZeroButton productId={product.id} />
               </li>
             );
           } else {
@@ -63,6 +73,6 @@ export default function Cart() {
         })}
       </ul>
       {renderTotalAmount(total)}
-    </>
+    </section>
   );
 }

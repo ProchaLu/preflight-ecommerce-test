@@ -1,15 +1,48 @@
+.pageContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .productsSection {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
 }
 
 .productCard {
-  border: 1px solid black;
   padding: 20px;
-  margin: 20px;
+  margin: 10px;
   a {
     display: flex;
     flex-direction: column;
+    gap: 10px;
   }
+}
+
+.productNameAndPrice {
+  font-family: Nova Mono, 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  display: flex;
+  justify-content: space-between;
+}
+.zoom {
+  padding: 10px;
+  &:hover {
+    transform: scale(1.2);
+    transition: transform 330ms ease-in-out;
+    box-shadow: 10px 5px 5px lightgray;
+  }
+}
+
+.headerWrapper {
+  margin: 0 auto 0 0;
+  padding-left: 20px;
+}
+
+.header {
+  font-family: Nova Mono, 'Courier New', Courier, monospace;
+  color: rgba(93, 107, 98, 1);
+  padding: 20px;
 }
