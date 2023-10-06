@@ -24,6 +24,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/favicon/favicon.ico" />
+        <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/favicon/icon-apple-touch.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -58,7 +61,7 @@ export default function RootLayout({ children }) {
               href="/cart"
               data-test-id="cart-link"
             >
-              <Image src={shoppingCartIcon} />
+              <Image src={shoppingCartIcon} alt="covfefe logo" />
               <span data-test-id="cart-count"> {quantityInCart}</span>
             </Link>
           </div>
@@ -68,7 +71,8 @@ export default function RootLayout({ children }) {
           <Link href="/">Impressum</Link>
           <div className="attribution">
             Images designed by{' '}
-            <Link href="https://www.freepik.com/">Freepik</Link>
+            <Link href="https://www.freepik.com/">Freepik</Link> &{' '}
+            <Link href="https://www.canva.com/">Canva AI</Link>
           </div>
           <div className="foundingYear">2023 Covfefe</div>
         </footer>
