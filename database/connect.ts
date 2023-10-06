@@ -3,7 +3,7 @@ import { headers } from 'next/headers';
 import postgres, { Sql } from 'postgres';
 import { setEnvironmentVariables } from '../util/config.mjs';
 
-setEnvironmentVariables();
+// setEnvironmentVariables();
 
 // const sql = postgres({
 //   transform: {
