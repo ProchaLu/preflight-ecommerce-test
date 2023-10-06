@@ -1,5 +1,5 @@
-import React from 'react';
 import CheckOutForm from './CheckOutForm';
+import styles from './page.module.scss';
 
 export const metadata = {
   title: 'Check out',
@@ -8,8 +8,7 @@ export const metadata = {
 
 export default function Checkout() {
   return (
-    <div>
-      <p>This is checkout </p>
+    <div className={styles.formWrapper}>
       <CheckOutForm />
     </div>
   );

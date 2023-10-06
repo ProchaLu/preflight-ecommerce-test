@@ -1,0 +1,78 @@
+.header {
+  font-family: Nova Mono, 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  padding-bottom: 20px;
+  color: rgba(93, 107, 98, 1);
+}
+
+.form {
+  display: flex;
+  gap: 80px;
+
+  fieldset {
+    border: none;
+  }
+
+  input {
+    display: block;
+    background-color: #f4f3f2;
+    border: 0.5px solid rgba(93, 107, 98, 0.5);
+    padding: 10px;
+    margin: 10px 0;
+    // margin: 20px 10px 20px 0;
+    text-align: center;
+
+    &:focus {
+      outline-color: rgba(93, 107, 98, 0.5);
+    }
+  }
+
+  .fullName,
+  .cardDetails,
+  .cityCode {
+    display: flex;
+    gap: 10px;
+    // justify-content: center;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .fullLine {
+    width: 100%;
+  }
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.button {
+  background-color: lightgrey;
+  border: none;
+  padding: 5px 10px;
+  margin: 10px 0;
+  font-family: Nova Mono, 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  width: 50%;
+
+  &:hover {
+    background-color: rgba(93, 107, 98, 0.5);
+  }
+}
+
+.moreSpacing {
+  padding-top: 20px;
+}
+
+.whiteButton {
+  background-color: #f4f3f2;
+  border: 0.5px solid lightgray;
+}
