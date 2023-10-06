@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { parseJson } from '../util/json';
 import { getLocalStorage, setLocalStorage } from '../util/localStorage';
+import styles from './CookieBanner.module.scss';
 
 export default function CookieBanner() {
   const [areCookiesAccepted, setAreCookiesAccepted] = useState(false);
@@ -17,13 +18,13 @@ export default function CookieBanner() {
 
   return (
     <div
-    // className={`${styles.cookieBanner} ${
-    //   areCookiesAccepted ? styles.closed : styles.open
-    // }`}
+      className={`${styles.cookieBanner} ${
+        areCookiesAccepted ? styles.closed : styles.open
+      }`}
     >
-      <div>Do you accept the use of cookies?</div>
+      <p>Do you accept the use of cookies?</p>
       <button
-        // className={styles.button}
+        className={styles.button}
         onClick={() => {
           setLocalStorage('cookiePolicy', JSON.stringify(true));
           setAreCookiesAccepted(true);
