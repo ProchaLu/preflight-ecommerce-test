@@ -8,7 +8,7 @@ export default function SetSelectedQuantity(props) {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   return (
-    <form>
+    <form className={styles.form}>
       <input
         type="number"
         value={selectedQuantity}

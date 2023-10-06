@@ -1,18 +1,31 @@
 .productContent {
   display: flex;
   gap: 80px;
-  margin: 20px;
+  margin: 40px;
 }
 
 .h1,
-.label {
+.productInfo {
   font-family: Nova Mono, 'Courier New', Courier, monospace;
-  text-transform: uppercase;
   letter-spacing: 0.1ch;
+}
+
+.h1 {
+  text-transform: uppercase;
+  padding-bottom: 20px;
 }
 
 .productDescription {
   display: flex;
   flex-direction: column;
+  max-width: 600px;
   gap: 20px;
+  padding: 20px;
+  span {
+    padding-right: 20px;
+  }
+}
+
+.productImage {
+  padding: 20px 0;
 }
