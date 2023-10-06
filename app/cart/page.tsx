@@ -4,6 +4,7 @@ import { getProducts } from '../../database/products';
 import bialetti from '../../public/images/moka-pot.png';
 import { getCookie } from '../../util/cookies';
 import { parseJson } from '../../util/json';
+import { CartItem } from './actions';
 import AddOneProduct from './AddOneProduct';
 import styles from './page.module.scss';
 import RemoveOneProduct from './RemoveOneProduct';
@@ -14,7 +15,7 @@ export const metadata = {
   description: 'Your shopping cart at Covfefe',
 };
 
-export function renderTotalAmount(total) {
+export function renderTotalAmount(total: number) {
   if (total > 0) {
     return (
       <>
@@ -47,7 +48,9 @@ export default async function Cart() {
   const products = await getProducts();
 
   const mergeCookiesWithProducts = products.map((product) => {
-    const matchingWithProduct = cart.find((item) => product.id === item.id);
+    const matchingWithProduct = cart.find(
+      (item: CartItem) => product.id === item.id,
+    );
     return { ...product, quantity: matchingWithProduct?.quantity };
   });
 

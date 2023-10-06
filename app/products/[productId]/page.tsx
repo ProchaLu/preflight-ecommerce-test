@@ -4,7 +4,13 @@ import { getProductById } from '../../../database/products';
 import AddQuantityToCart from './AddQuantityToCart';
 import styles from './page.module.scss';
 
-export async function generateMetadata({ params }) {
+type Props = {
+  params: {
+    productId: number;
+  };
+};
+
+export async function generateMetadata({ params }: Props) {
   const singleProduct = await getProductById(Number(params.productId));
 
   return {
@@ -12,7 +18,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function Product({ params }) {
+export default async function Product({ params }: Props) {
   const singleProduct = await getProductById(Number(params.productId));
 
   if (!singleProduct) {

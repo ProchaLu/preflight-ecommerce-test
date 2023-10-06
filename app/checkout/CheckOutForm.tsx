@@ -78,8 +78,8 @@ export default function CheckOutForm() {
         <input
           data-test-id="checkout-credit-card"
           id="creditCard"
-          maxLength="16"
-          minLength="16"
+          maxLength={16}
+          minLength={16}
           pattern="[0-9]+"
           required
           placeholder="Card number"
@@ -96,8 +96,8 @@ export default function CheckOutForm() {
           <input
             data-test-id="checkout-security-code"
             id="securityCode"
-            maxLength="3"
-            minLength="3"
+            maxLength={3}
+            minLength={3}
             pattern="[0-9]+"
             required
             placeholder="Security code"

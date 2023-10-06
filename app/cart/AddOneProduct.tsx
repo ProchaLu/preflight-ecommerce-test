@@ -3,7 +3,11 @@
 import { addOneToCart } from './actions';
 import styles from './buttonStyles.module.scss';
 
-export default function AddOneProduct(productId) {
+export type Props = {
+  productId: number;
+};
+
+export default function AddOneProduct({ productId }: Props) {
   return (
     <button
       className={styles.button}

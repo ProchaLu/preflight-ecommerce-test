@@ -4,7 +4,11 @@ import { useState } from 'react';
 import { addQuantity } from './actions';
 import styles from './AddQuantityToCart.module.scss';
 
-export default function SetSelectedQuantity(props) {
+type Props = {
+  productId: number;
+};
+
+export default function SetSelectedQuantity(props: Props) {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   return (
@@ -14,13 +18,15 @@ export default function SetSelectedQuantity(props) {
         value={selectedQuantity}
         min="1"
         data-test-id="product-quantity"
-        onChange={(event) => setSelectedQuantity(event.currentTarget.value)}
+        onChange={(event) =>
+          setSelectedQuantity(Number(event.currentTarget.value))
+        }
         className={styles.input}
       />
       <button
         className={styles.cartButton}
         formAction={async () =>
-          await addQuantity(props.productId, Number(selectedQuantity))
+          await addQuantity(props.productId, selectedQuantity)
         }
         data-test-id="product-add-to-cart"
       >

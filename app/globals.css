@@ -9,7 +9,6 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: #f4f3f2;
 }
 
@@ -42,7 +41,8 @@ footer {
 }
 
 main {
-  margin: 100px 0;
+  margin: 150px 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 a {
@@ -76,6 +76,7 @@ a {
 
 .attribution {
   font-size: 10px;
+  gap: 1px;
 }
 
 .logo {
