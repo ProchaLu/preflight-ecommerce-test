@@ -1,5 +1,7 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { getProducts } from '../../database/products';
+import bialetti from '../../public/images/moka-pot.png';
 import { getCookie } from '../../util/cookies';
 import { parseJson } from '../../util/json';
 import AddOneProduct from './AddOneProduct';
@@ -15,15 +17,20 @@ export const metadata = {
 export function renderTotalAmount(total) {
   if (total > 0) {
     return (
-      <div>
-        <p className={styles.total}>
-          Total: <span data-test-id="cart-total">{total}</span>
-          Euro
-        </p>
-        <Link className={styles.checkoutButton} href="/checkout">
+      <>
+        <div className={styles.renderTotal}>
+          <p className={styles.total}>
+            Total:
+            <span className={styles.product} data-test-id="cart-total">
+              {total}
+            </span>
+            <span className={styles.product}>€</span>
+          </p>
+        </div>
+        <Link className={styles.checkoutLink} href="/checkout">
           Proceed to Checkout
         </Link>
-      </div>
+      </>
     );
   } else {
     return (
@@ -45,34 +52,51 @@ export default async function Cart() {
   });
 
   return (
-    <section className={styles.cartSection}>
-      <h1 className={styles.header}>Shopping cart:</h1>
-      <ul>
-        {mergeCookiesWithProducts.map((product) => {
-          if (product.quantity) {
-            total += product.quantity * product.price;
+    <div className={styles.cartPage}>
+      <section className={styles.cartSection}>
+        <h1 className={styles.header}>Shopping cart:</h1>
+        <ul>
+          {mergeCookiesWithProducts.map((product) => {
+            if (product.quantity) {
+              total += product.quantity * product.price;
 
-            return (
-              <li
-                key={`product-${product.id}`}
-                data-test-id={`cart-product-${product.id}`}
-              >
-                {product.name} - Quantity:{' '}
-                <AddOneProduct productId={product.id} />
-                <span data-test-id={`cart-product-quantity-${product.id}`}>
-                  {product.quantity}
-                </span>
-                <RemoveOneProduct productId={product.id} />
-                Subtotal: {product.quantity * product.price}
-                <SetQuantityToZeroButton productId={product.id} />
-              </li>
-            );
-          } else {
-            return undefined;
-          }
-        })}
-      </ul>
-      {renderTotalAmount(total)}
-    </section>
+              return (
+                <li
+                  key={`product-${product.id}`}
+                  data-test-id={`cart-product-${product.id}`}
+                >
+                  <div className={styles.partOne}>
+                    <span className={styles.product}>{product.name}:</span>
+                  </div>
+                  <div className={styles.partTwo}>
+                    Quantity: <AddOneProduct productId={product.id} />
+                    <span
+                      className={styles.product}
+                      data-test-id={`cart-product-quantity-${product.id}`}
+                    >
+                      {product.quantity}
+                    </span>
+                    <RemoveOneProduct productId={product.id} />
+                  </div>
+                  <div className={styles.partThree}>
+                    Subtotal:{' '}
+                    <span className={styles.product}>
+                      {product.quantity * product.price}€
+                    </span>
+                  </div>
+                  <div className={styles.partFour}>
+                    <SetQuantityToZeroButton productId={product.id} />
+                  </div>
+                </li>
+              );
+            } else {
+              return undefined;
+            }
+          })}
+        </ul>
+        {renderTotalAmount(total)}
+      </section>
+      <section className={styles.imageSection}></section>
+    </div>
   );
 }

@@ -6,7 +6,7 @@ import styles from './buttonStyles.module.scss';
 export default function RemoveOneProduct(productId) {
   return (
     <button
-      className={styles.button}
+      className={`${styles.button}`}
       onClick={async () => await removeOneFromCart(productId)}
     >
       -

@@ -6,12 +6,36 @@
   padding: 20px;
 }
 
+.cartPage {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
 .cartSection {
   margin: 20px;
+  flex-basis: 30%;
+
+  ul {
+    margin: 0px;
+    padding: 0px;
+  }
 
   li {
-    list-style-type: '-';
-    padding: 20px;
+    list-style: none;
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: 24% 33% 33% 4%;
+    align-items: center;
+
+    &div:last-child {
+      margin: 0px;
+    }
+  }
+
+  .partFour {
+    text-align: end;
+    // margin: 0px;
   }
 }
 
@@ -23,22 +47,44 @@
   margin: 20px;
 }
 
+.renderTotal {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  // width: 100%;
+  .total {
+    grid-column-start: 1;
+  }
+  .product {
+    grid-column-start: 2;
+  }
+}
+
 .total {
   border-top: 1px solid rgba(93, 107, 98, 0.5);
   border-bottom: 1px solid rgba(93, 107, 98, 0.5);
-  padding: 20px;
+  margin: 20px;
+  padding: 20px 0;
+  font-weight: bold;
 }
 
-.checkoutButton {
+.checkoutLink {
   background-color: lightgrey;
   border: none;
-  padding: 0 5px;
+  padding: 5px 10px;
+  display: block;
+  text-align: center;
   font-family: Nova Mono, 'Courier New', Courier, monospace;
   text-transform: uppercase;
   letter-spacing: 0.1ch;
-  margin: 20px;
 
   &:hover {
     background-color: rgba(93, 107, 98, 0.5);
   }
+}
+
+.product {
+  font-family: Nova Mono, 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin: 5px 0;
 }
