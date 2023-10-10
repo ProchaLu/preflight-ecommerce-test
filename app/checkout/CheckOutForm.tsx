@@ -1,14 +1,14 @@
 'use client';
 
 import { redirect } from 'next/navigation';
-import { clearCookies } from './actions';
+import { clearCookies } from '../../util/cookies';
 import styles from './CheckOutForm.module.scss';
 
 export default function CheckOutForm() {
   return (
     <form className={styles.form}>
       <div>
-        <fieldset className={styles.personalInfo}>
+        <fieldset>
           <h1 className={styles.header}>Personal Information</h1>
           <div className={styles.fullName}>
             <input
@@ -35,7 +35,7 @@ export default function CheckOutForm() {
             className={styles.fullLine}
           />
         </fieldset>
-        <fieldset className={styles.address}>
+        <fieldset>
           <h1 className={`${styles.header} ${styles.moreSpacing}`}>
             Shipping Address
           </h1>
@@ -73,7 +73,7 @@ export default function CheckOutForm() {
           />
         </fieldset>
       </div>
-      <fieldset className={styles.paymentInfo}>
+      <fieldset>
         <h1 className={styles.header}>Payment Information</h1>
         <input
           data-test-id="checkout-credit-card"

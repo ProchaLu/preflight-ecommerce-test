@@ -1,7 +1,7 @@
 import './globals.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PropsWithChildren } from 'react';
+import { ReactNode } from 'react';
 import coffeeLogo from '../public/images/coffee-beans.png';
 import shoppingCartIcon from '../public/images/shopping-cart.svg';
 import { getCookie } from '../util/cookies';
@@ -14,7 +14,9 @@ export const metadata = {
   description: 'Get your caffein here!',
 };
 
-type Props = PropsWithChildren;
+type Props = {
+  children: ReactNode;
+};
 
 export default function RootLayout({ children }: Props) {
   const cartCookies = getCookie('cart');
@@ -43,7 +45,7 @@ export default function RootLayout({ children }: Props) {
         />
       </head>
       <body>
-        <CookieBanner/>
+        <CookieBanner />
         <header>
           <nav className="navBar">
             <Link className="hover-underline-animation" href="/">
@@ -56,7 +58,6 @@ export default function RootLayout({ children }: Props) {
             >
               Products
             </Link>
-            {/* wäre cool wenn das so runterfahren könnte & schon die einzelnen produkte anzeigt */}
           </nav>
           <Link className="logo" href="/">
             <Image src={coffeeLogo} alt="store-logo" width={50} height={50} />

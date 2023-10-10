@@ -13,7 +13,7 @@ export default function ThankYou() {
       <h1 className={styles.header}>Thank you for shopping with us!</h1>;
       <Image
         src={coffee}
-        alt={'cup of coffee'}
+        alt="cup of coffee"
         width={130}
         height={130}
         className={styles.coffeeImage}
