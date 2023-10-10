@@ -17,7 +17,6 @@
     "**/*.jsx",
     "**/*.cjs",
     "**/*.mjs",
-    ".next/types/**/*.ts",
-    "app/cart/AddOneProduct.tsx"
+    ".next/types/**/*.ts"
   ]
 }
