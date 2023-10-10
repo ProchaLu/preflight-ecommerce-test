@@ -18,10 +18,10 @@ type Props = {
   children: ReactNode;
 };
 
-export default function RootLayout({ children }: Props) {
-  const cartCookies = getCookie('cart');
+export default async function RootLayout({ children }: Props) {
+  const cartCookies = await getCookie('cart');
 
-  const cart = !cartCookies ? [] : parseJson(cartCookies);
+  const cart = !cartCookies ? [] : parseJson(cartCookies!);
 
   const quantityInCart = cart.reduce((total: number, item: CartItem) => {
     return total + item.quantity;

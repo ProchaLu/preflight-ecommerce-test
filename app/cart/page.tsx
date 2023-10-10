@@ -51,7 +51,7 @@ function renderTotalAmount(total: number) {
 
 export default async function Cart() {
   let total = 0;
-  const cartCookies = getCookie('cart');
+  const cartCookies = await getCookie('cart');
 
   const cart = !cartCookies ? [] : parseJson(cartCookies);
   const products = await getProducts();

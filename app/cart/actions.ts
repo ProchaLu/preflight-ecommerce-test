@@ -9,7 +9,7 @@ export type CartItem = {
 };
 
 export async function addOneToCart(productId: number) {
-  const cartCookies = getCookie('cart');
+  const cartCookies = await getCookie('cart');
 
   const cart = !cartCookies ? [] : parseJson(cartCookies);
 
@@ -25,7 +25,7 @@ export async function addOneToCart(productId: number) {
 }
 
 export async function removeOneFromCart(productId: number) {
-  const cartCookies = getCookie('cart');
+  const cartCookies = await getCookie('cart');
 
   let cart = !cartCookies ? [] : parseJson(cartCookies);
 
@@ -46,7 +46,7 @@ export async function removeOneFromCart(productId: number) {
 }
 
 export async function removeProduct(productId: number) {
-  const cartCookies = getCookie('cart');
+  const cartCookies = await getCookie('cart');
 
   const cart = !cartCookies ? [] : parseJson(cartCookies);
 

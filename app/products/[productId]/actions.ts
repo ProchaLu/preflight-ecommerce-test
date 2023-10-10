@@ -5,7 +5,7 @@ import { parseJson } from '../../../util/json';
 import { updateCart } from '../../../util/updateCart';
 
 export async function addQuantity(productId: number, quantity: number) {
-  const cartCookies = getCookie('cart');
+  const cartCookies = await getCookie('cart');
 
   const cart = !cartCookies ? [] : parseJson(cartCookies);
 
