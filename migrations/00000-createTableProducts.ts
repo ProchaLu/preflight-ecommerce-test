@@ -4,10 +4,10 @@ export type Product = {
   id: number;
   name: string;
   type: string;
-  origin: string | null;
+  origin: string;
   flavourProfile: string[];
   price: number;
-  description: string;
+  description: string | null;
 };
 
 export async function up(sql: Sql) {

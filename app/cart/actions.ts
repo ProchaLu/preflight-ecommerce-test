@@ -1,7 +1,6 @@
 'use server';
 
-import { cookies } from 'next/headers';
-import { getCookie } from '../../util/cookies';
+import { getCookie, setCookie } from '../../util/cookies';
 import { parseJson } from '../../util/json';
 
 export type CartItem = {
@@ -22,7 +21,7 @@ export async function addOneToCart(productId: number) {
     productToUpdate.quantity++;
   }
 
-  await cookies().set('cart', JSON.stringify(cart));
+  await setCookie(cart);
 }
 
 export async function removeOneFromCart(productId: number) {
@@ -43,7 +42,7 @@ export async function removeOneFromCart(productId: number) {
       });
     }
   }
-  await cookies().set('cart', JSON.stringify(cart));
+  await setCookie(cart);
 }
 
 export async function removeProduct(productId: number) {
@@ -52,8 +51,8 @@ export async function removeProduct(productId: number) {
   const cart = !cartCookies ? [] : parseJson(cartCookies);
 
   const cartWithoutTheItem = cart.filter((item: CartItem) => {
-    if (item.id !== productId) return item;
+    return item.id !== productId;
   });
 
-  await cookies().set('cart', JSON.stringify(cartWithoutTheItem));
+  await setCookie(cartWithoutTheItem);
 }

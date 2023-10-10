@@ -1,10 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { getProducts } from '../../database/products';
-import bialetti from '../../public/images/moka-pot.png';
 import { getCookie } from '../../util/cookies';
 import { parseJson } from '../../util/json';
-import { CartItem } from './actions';
+import { mergeCookiesWithProducts } from '../../util/mergeCookiesWithProducts';
 import AddOneProduct from './AddOneProduct';
 import styles from './page.module.scss';
 import RemoveOneProduct from './RemoveOneProduct';
@@ -15,7 +13,18 @@ export const metadata = {
   description: 'Your shopping cart at Covfefe',
 };
 
-export function renderTotalAmount(total: number) {
+type MergedProduct = {
+  id: number;
+  name: string;
+  type: string;
+  origin: string;
+  flavourProfile: string[];
+  price: number;
+  description: string | null;
+  quantity: number;
+};
+
+function renderTotalAmount(total: number) {
   if (total > 0) {
     return (
       <>
@@ -47,19 +56,17 @@ export default async function Cart() {
   const cart = !cartCookies ? [] : parseJson(cartCookies);
   const products = await getProducts();
 
-  const mergeCookiesWithProducts = products.map((product) => {
-    const matchingWithProduct = cart.find(
-      (item: CartItem) => product.id === item.id,
-    );
-    return { ...product, quantity: matchingWithProduct?.quantity };
-  });
+  const mergedProducts = mergeCookiesWithProducts(products, cart);
 
   return (
     <div className={styles.cartPage}>
       <section className={styles.cartSection}>
         <h1 className={styles.header}>Shopping cart:</h1>
         <ul>
-          {mergeCookiesWithProducts.map((product) => {
+          {mergedProducts.map((product: null | MergedProduct) => {
+            if (!product) {
+              return null;
+            }
             if (product.quantity) {
               total += product.quantity * product.price;
 
@@ -68,10 +75,10 @@ export default async function Cart() {
                   key={`product-${product.id}`}
                   data-test-id={`cart-product-${product.id}`}
                 >
-                  <div className={styles.partOne}>
+                  <div className="partOne">
                     <span className={styles.product}>{product.name}:</span>
                   </div>
-                  <div className={styles.partTwo}>
+                  <div className="partTwo">
                     Quantity: <AddOneProduct productId={product.id} />
                     <span
                       className={styles.product}
@@ -81,7 +88,7 @@ export default async function Cart() {
                     </span>
                     <RemoveOneProduct productId={product.id} />
                   </div>
-                  <div className={styles.partThree}>
+                  <div className="partThree">
                     Subtotal:{' '}
                     <span className={styles.product}>
                       {product.quantity * product.price}€
@@ -99,7 +106,7 @@ export default async function Cart() {
         </ul>
         {renderTotalAmount(total)}
       </section>
-      <section className={styles.imageSection}></section>
+      <section className="imageSection" />
     </div>
   );
 }

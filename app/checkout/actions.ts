@@ -1,7 +1,4 @@
-'use server';
+// 'use server';
+// import { clearCookies } from '../../util/cookies';
 
-import { cookies } from 'next/headers';
-
-export async function clearCookies() {
-  await cookies().set('cart', JSON.stringify([]));
-}
+// clearCookies();
