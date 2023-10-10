@@ -21,7 +21,7 @@ type Props = {
 export default async function RootLayout({ children }: Props) {
   const cartCookies = await getCookie('cart');
 
-  const cart = !cartCookies ? [] : parseJson(cartCookies!);
+  const cart = !cartCookies ? [] : parseJson(cartCookies);
 
   const quantityInCart = cart.reduce((total: number, item: CartItem) => {
     return total + item.quantity;
@@ -39,10 +39,10 @@ export default async function RootLayout({ children }: Props) {
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <link
+        {/* <link
           href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap"
           rel="stylesheet"
-        />
+        /> */}
       </head>
       <body>
         <CookieBanner />
