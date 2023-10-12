@@ -106,8 +106,8 @@ export default function CheckOutForm() {
         <div className={styles.buttonWrapper}>
           <button
             className={styles.button}
-            formAction={async () => {
-              await clearCookies();
+            formAction={() => {
+              clearCookies().catch((error) => error);
               redirect('/thankyou');
             }}
             data-test-id="checkout-confirm-order"
