@@ -29,7 +29,7 @@ export default async function Product({ params }: Props) {
       <Image
         data-test-id="product-image"
         src={`/images/productImages/${singleProduct.name}.png`}
-        alt="coffee beans product-image"
+        alt={`bag of coffee beans of the product ${singleProduct.name}`}
         width={600}
         height={600}
         className={styles.productImage}
