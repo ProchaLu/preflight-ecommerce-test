@@ -38,7 +38,11 @@ function renderTotalAmount(total: number) {
             <span className={styles.product}>€</span>
           </p>
         </div>
-        <Link className={styles.checkoutLink} href="/checkout">
+        <Link
+          data-test-id="cart-checkout"
+          className={styles.checkoutLink}
+          href="/checkout"
+        >
           Proceed to Checkout
         </Link>
       </>
