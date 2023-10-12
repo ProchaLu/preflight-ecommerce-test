@@ -28,29 +28,19 @@ The shops styling is optimised for screens with a width > 900 px, implementing r
 
 # Setup instructions:
 
-- Clone the GitHub repo locally
+- Clone the respository
+- Install PostgresQL
+- Setup the database (database + user)
+- Create a .env file like this
+    PGHOST=localhost
+    PGDATABASE=<nameOfYourDatabase>
+    PGUSERNAME=<nameOfYourUsername>
+    PGPASSWORD=<nameOfYourPassword>
+- Run ```pnpm install``` to install required dependencies
+- Run ```pnpm migrate``` up
+- Run pnpm dev to start the server 
+- Clone the repository with git clone <repo>
 
-Database setup
-
-- Install PostgreSQL
-- Create file called .env and create credentials for database name/user/password according to .env.example file looking like this:
-
-PGHOST=localhost
-PGDATABASE=<nameOfYourDatabase>
-PGUSERNAME=<nameOfYourUsername>
-PGPASSWORD=<nameOfYourPassword>
-
-Required dependencies:
-
-- Run pnpm install
-
-Migrate databases:
-
-- Run pnpm migrate up
-
-Start server:
-
-- Run pnpm start
 
 Deployment instructions:
 For the deployment of this project fly.io was used, the following steps are important for a successful deployment
@@ -62,13 +52,4 @@ For the deployment of this project fly.io was used, the following steps are impo
 
 # Screenshots
 
-Clone the repository with git clone <repo>
-Setup the database by downloading and installing PostgreSQL
-Create a user and a database
-Create a new file .env
-Copy the environment variables from .env-example into .env
-Replace the placeholders xxxxx with your username, password and name of database
-Install dotenv-cli with yarn add dotenv-cli
-Run yarn install in your command line
-Run the migrations with yarn migrate up
-Start the server by running yarn dev
+
