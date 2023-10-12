@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getProductById } from '../../../database/products';
 import AddQuantityToCart from './AddQuantityToCart';
@@ -26,7 +26,7 @@ export default async function Product({ params }: Props) {
   }
   return (
     <section className={styles.productContent}>
-      <Image
+      <img
         data-test-id="product-image"
         src={`/images/productImages/${singleProduct.name}.png`}
         alt={`bag of coffee beans of the product ${singleProduct.name}`}
