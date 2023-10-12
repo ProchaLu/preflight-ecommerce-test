@@ -1,6 +1,6 @@
 'use client';
 
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { clearCookies } from '../../util/cookies';
 import styles from './CheckOutForm.module.scss';
 
