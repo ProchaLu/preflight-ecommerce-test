@@ -118,7 +118,7 @@ export default function CheckOutForm() {
           </button>
           <button
             className={`${styles.button} ${styles.whiteButton}`}
-            formAction={() => redirect('/products')}
+            formAction={() => router.push('/products')}
             formNoValidate
           >
             Continue shopping

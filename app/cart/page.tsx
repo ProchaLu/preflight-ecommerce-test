@@ -49,7 +49,12 @@ function renderTotalAmount(total: number) {
     );
   } else {
     return (
-      <p className={styles.emptyCart}>Your shopping cart is currently empty</p>
+      <p className={styles.emptyCart}>
+        Your shopping cart is currently empty. Total:{' '}
+        <span className={styles.product} data-test-id="cart-total">
+          0
+        </span>
+      </p>
     );
   }
 }
