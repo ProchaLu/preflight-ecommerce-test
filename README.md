@@ -13,6 +13,7 @@ The shops styling is optimised for screens with a width > 900 px, implementing r
 - checkout page
 - thank you page for a completed order
 
+
 # Technologies used
 
 - Next.js
@@ -26,30 +27,38 @@ The shops styling is optimised for screens with a width > 900 px, implementing r
 - Playwright end-to-end-tests
 - PostgreSQL
 
+
 # Setup instructions:
 
-- Clone the respository
+- ```Clone``` the respository 
 - Install PostgresQL
 - Setup the database (database + user)
-- Create a .env file like this
-    PGHOST=localhost
+- Create a ```.env file``` and set it up like this
+    ```PGHOST=localhost
     PGDATABASE=<nameOfYourDatabase>
     PGUSERNAME=<nameOfYourUsername>
-    PGPASSWORD=<nameOfYourPassword>
+    PGPASSWORD=<nameOfYourPassword>```
 - Run ```pnpm install``` to install required dependencies
 - Run ```pnpm migrate``` up
-- Run pnpm dev to start the server 
-- Clone the repository with git clone <repo>
+- Run ```pnpm dev``` to start the server 
 
 
-Deployment instructions:
-For the deployment of this project fly.io was used, the following steps are important for a successful deployment
+# Deployment instructions:
 
-- Sign up on fly.io
-- Create app
-- Choose region
-- HIER FEHLEN NOCH STEPS
+- Sign up on fly.io (+ add payment method) 
+- Run ```flyctl auth login``` and enter your credentials
+    after successfull login you will see the message `successfully logged in as <your email>` in the terminal
+- Run ```flyctl apps create --name <app name> --machines``` to create an app
+- Create secrets by running ```flyctl secrets set PGHOST=localhost PGDATABASE=<databasename> PGUSERNAME=<username> PGPASSWORD=<password>```
+- Create volume for the database by running ```flyctl volumes create postgres --size 1 --region otp```
+- Deploy by running ```flyctl deploy```
+
 
 # Screenshots
 
+- Products page
+  ![Product page]()
 
+- Singe product page
+
+- Checkout page
