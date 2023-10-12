@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 import { getProducts } from '../../database/products';
 import styles from './page.module.scss';
@@ -28,8 +28,8 @@ export default async function Page() {
                 data-test-id={`product-${product.id}`}
                 className={styles.zoom}
               >
-                <Image
-                  src={`/images/productImages/${product.name}.png`}
+                <img
+                  src={`/images/productImages/${product.name}.avif`}
                   alt={product.name}
                   width={300}
                   height={300}

@@ -28,7 +28,7 @@ export default async function Product({ params }: Props) {
     <section className={styles.productContent}>
       <img
         data-test-id="product-image"
-        src={`/images/productImages/${singleProduct.name}.png`}
+        src={`/images/productImages/${singleProduct.name}.avif`}
         alt={`bag of coffee beans of the product ${singleProduct.name}`}
         width={600}
         height={600}
