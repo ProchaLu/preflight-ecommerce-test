@@ -14,14 +14,14 @@ export default function CheckOutForm() {
             <input
               data-test-id="checkout-first-name"
               id="firstName"
-              pattern="\p{Letter}+"
+              pattern="[\p{Letter}./- ]+"
               required
               placeholder="First name"
             />
             <input
               data-test-id="checkout-last-name"
               id="lastName"
-              pattern="\p{Letter}+"
+              pattern="[\p{Letter}./- ]+"
               required
               placeholder="Last name"
             />
@@ -42,7 +42,7 @@ export default function CheckOutForm() {
           <input
             data-test-id="checkout-address"
             id="address"
-            pattern="[\p{Letter}0-9./-]+"
+            pattern="[\p{Letter}0-9./- ]+"
             required
             placeholder="Address"
             className={styles.fullLine}
@@ -51,7 +51,7 @@ export default function CheckOutForm() {
             <input
               data-test-id="checkout-city"
               id="city"
-              pattern="\p{Letter}+"
+              pattern="[\p{Letter}./- ]+"
               required
               placeholder="City"
             />
@@ -66,7 +66,7 @@ export default function CheckOutForm() {
           <input
             data-test-id="checkout-country"
             id="country"
-            pattern="\p{Letter}+"
+            pattern="[\p{Letter}./- ]+"
             required
             placeholder="Country"
             className={styles.fullLine}
