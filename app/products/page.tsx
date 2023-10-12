@@ -8,14 +8,13 @@ export const metadata = {
   description: "Covfefe's products",
 };
 
-export default async function page() {
+export default async function Page() {
   const products = await getProducts();
 
   return (
     <div className={styles.pageContent}>
       <div className={styles.headerWrapper}>
         <h1 className={styles.header}>Let us spill our beans...</h1>
-        {/* Option to have filter here */}
       </div>
       <section className={styles.productsSection}>
         {products.map((product) => {
