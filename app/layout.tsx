@@ -33,16 +33,6 @@ export default async function RootLayout({ children }: Props) {
         <link rel="icon" href="/favicon/favicon.ico" />
         <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/favicon/icon-apple-touch.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        {/* <link
-          href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap"
-          rel="stylesheet"
-        /> */}
       </head>
       <body>
         <CookieBanner />

@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'NovaMono-Regular';
-  src: local('NovaMono-Regular'),
-    url('../public/font/NovaMono-Regular.ttf') format('ttf');
+  font-family: 'Nova Mono';
+  src: url(https://fonts.gstatic.com/s/novamono/v20/Cn-0JtiGWQ5Ajb--MRKvZ2ZZj9AtSw.woff2)
+    format('woff2');
   font-weight: 400;
 }
 
@@ -20,7 +20,7 @@ footer {
   padding: 0 20px;
   position: fixed;
   background-color: #f4f3f2;
-  font-family: Nova Mono, 'Courier New', Courier, monospace;
+  font-family: 'Nova Mono', 'Courier New', Courier, monospace;
   text-transform: uppercase;
   letter-spacing: 0.3ch;
 }
