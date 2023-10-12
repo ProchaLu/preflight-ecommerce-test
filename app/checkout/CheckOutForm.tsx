@@ -1,10 +1,12 @@
 'use client';
 
-import { redirect } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import { clearCookies } from '../../util/cookies';
 import styles from './CheckOutForm.module.scss';
 
 export default function CheckOutForm() {
+  const router = useRouter();
+
   return (
     <form className={styles.form}>
       <div>
@@ -106,9 +108,9 @@ export default function CheckOutForm() {
         <div className={styles.buttonWrapper}>
           <button
             className={styles.button}
-            formAction={() => {
-              clearCookies().catch((error) => error);
-              redirect('/thankyou');
+            formAction={async () => {
+              await clearCookies();
+              router.push('/thankyou');
             }}
             data-test-id="checkout-confirm-order"
           >
