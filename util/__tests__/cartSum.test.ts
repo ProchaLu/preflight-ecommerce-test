@@ -14,5 +14,5 @@ const product = {
 };
 
 test('updating a cookie that already exists in the cart', () => {
-  expect(cartSumTotal(total, product.quantity, product.price)).toBe('49.96');
+  expect(cartSumTotal(total, product.quantity, product.price)).toBe(49.96);
 });
