@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getProducts } from '../../database/products';
+import { cartSumTotal } from '../../util/cartSum';
 import { getCookie } from '../../util/cookies';
 import { parseJson } from '../../util/json';
 import { mergeCookiesWithProducts } from '../../util/mergeCookiesWithProducts';
@@ -68,8 +69,8 @@ export default async function Cart() {
               return null;
             }
             if (product.quantity) {
-              total += product.quantity * product.price;
-
+              total = cartSumTotal(total, product.quantity, product.price);
+              // total += product.quantity * product.price;
               return (
                 <li
                   key={`product-${product.id}`}
