@@ -8,9 +8,9 @@ export default function Home() {
     <section className={styles.heroSection}>
       <div className={styles.pageContent}>
         <Image
+          className={styles.heroSectionImage}
           src={heroSectionImage}
           alt="view of roasted coffee beans"
-          width={1500}
         />
       </div>
       <Link className={styles.shopLink} href="/products">
