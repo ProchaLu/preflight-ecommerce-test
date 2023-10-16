@@ -1,6 +1,7 @@
 import { CartItem } from '../app/cart/actions';
 import { Product } from '../migrations/00000-createTableProducts';
 
+// go over products and find item with the id and create new array that includes the quantity
 export function mergeCookiesWithProducts(
   products: Product[],
   cart: CartItem[],
