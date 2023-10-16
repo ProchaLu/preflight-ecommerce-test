@@ -38,13 +38,15 @@ function renderTotalAmount(total: number) {
             <span className={styles.product}>€</span>
           </p>
         </div>
-        <Link
-          data-test-id="cart-checkout"
-          className={styles.checkoutLink}
-          href="/checkout"
-        >
-          Proceed to Checkout
-        </Link>
+        <div className={styles.checkoutLinkWrapper}>
+          <Link
+            data-test-id="cart-checkout"
+            className={styles.checkoutLink}
+            href="/checkout"
+          >
+            Proceed to Checkout
+          </Link>
+        </div>
       </>
     );
   } else {
@@ -85,9 +87,16 @@ export default async function Cart() {
                   key={`product-${product.id}`}
                   data-test-id={`cart-product-${product.id}`}
                 >
-                  <div className="partOne">
+                  <div className={styles.partOne}>
                     <span className={styles.product}>{product.name}:</span>
+                    <img
+                      src={`/images/productImages/${product.name}.avif`}
+                      alt=""
+                      width={80}
+                      height={80}
+                    />
                   </div>
+
                   <div className="partTwo">
                     Quantity: <AddOneProduct productId={product.id} />
                     <span
@@ -116,7 +125,7 @@ export default async function Cart() {
         </ul>
         {renderTotalAmount(total)}
       </section>
-      <section className="imageSection" />
+      {/* <section className="imageSection" /> */}
     </div>
   );
 }

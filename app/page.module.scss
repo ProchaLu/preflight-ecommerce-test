@@ -18,7 +18,7 @@
   text-align: center;
   font-family: Nova Mono, 'Courier New', Courier, monospace;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 2.5rem;
   text-transform: uppercase;
   margin: 10px auto;
   position: relative;
@@ -31,4 +31,9 @@
     transition: transform 330ms ease-in-out;
     // box-shadow: 10px 5px 5px lightgray;
   }
+}
+
+.heroSectionImage {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
 }

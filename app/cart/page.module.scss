@@ -3,7 +3,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1ch;
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 0 20px 20px 0px;
 }
 
 .cartPage {
@@ -13,7 +13,7 @@
 }
 
 .cartSection {
-  margin: 20px;
+  margin: 20px 20px 20px 40px;
   flex-basis: 30%;
 
   ul {
@@ -26,7 +26,8 @@
     margin-left: 20px;
     display: grid;
     grid-template-columns: 24% 33% 33% 4%;
-    align-items: center;
+    align-items: flex-end;
+    padding-bottom: 15px;
 
     &div:last-child {
       margin: 0px;
@@ -48,15 +49,7 @@
 }
 
 .renderTotal {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  // width: 100%;
-  .total {
-    grid-column-start: 1;
-  }
-  .product {
-    grid-column-start: 2;
-  }
+  display: block;
 }
 
 .total {
@@ -65,13 +58,21 @@
   margin: 20px;
   padding: 20px 0;
   font-weight: bold;
+
+  .product:first-child {
+    margin-left: 20px;
+  }
 }
 
+.checkoutLinkWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .checkoutLink {
   background-color: lightgrey;
   border: none;
   padding: 5px 10px;
-  display: block;
   text-align: center;
   font-family: Nova Mono, 'Courier New', Courier, monospace;
   text-transform: uppercase;
@@ -87,4 +88,10 @@
   text-transform: uppercase;
   letter-spacing: 0.1ch;
   margin: 5px 0;
+}
+
+.partOne {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
