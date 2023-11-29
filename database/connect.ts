@@ -2,17 +2,6 @@ import 'server-only';
 import { headers } from 'next/headers';
 import postgres, { Sql } from 'postgres';
 
-// import { setEnvironmentVariables } from '../util/config.mjs';
-
-// setEnvironmentVariables();
-
-// const sql = postgres({
-//   transform: {
-//     ...postgres.camel,
-//     undefined: null,
-//   },
-// });
-
 declare module globalThis {
   let postgresSqlClient: Sql;
 }

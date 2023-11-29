@@ -81,7 +81,6 @@ export default async function Cart() {
             }
             if (product.quantity) {
               total = cartSumTotal(total, product.quantity, product.price);
-              // total += product.quantity * product.price;
               return (
                 <li
                   key={`product-${product.id}`}
@@ -125,7 +124,6 @@ export default async function Cart() {
         </ul>
         {renderTotalAmount(total)}
       </section>
-      {/* <section className="imageSection" /> */}
     </div>
   );
 }

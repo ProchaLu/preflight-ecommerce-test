@@ -53,7 +53,6 @@ export default async function RootLayout({ children }: Props) {
             <Image src={coffeeLogo} alt="store-logo" width={50} height={50} />
             COVFEFE
           </Link>
-          {/* searchbar */}
           <div className="cartWrapper">
             <Link
               className="hover-underline-animation"
