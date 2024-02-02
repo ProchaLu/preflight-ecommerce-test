@@ -12,9 +12,8 @@ mkdir -p "$PGDATA"
 chmod 0700 "$PGDATA"
 initdb -D "$PGDATA"
 
-# TODO check if we need to run this command for PostgreSQL16
-# # Update PostgreSQL config path to use volume location if app has a volume
-# sed -i "s/#unix_socket_directories = '\/run\/postgresql'/unix_socket_directories = '\/postgres-volume\/run\/postgresql'/g" /postgres-volume/run/postgresql/data/postgresql.conf || echo "PostgreSQL volume not mounted, running database as non-persistent (new deploys erase changes not saved in migrations)"
+# Update PostgreSQL config path to use volume location if app has a volume
+sed -i "s/#unix_socket_directories = '\/run\/postgresql'/unix_socket_directories = '\/postgres-volume\/run\/postgresql'/g" /postgres-volume/run/postgresql/data/postgresql.conf || echo "PostgreSQL volume not mounted, running database as non-persistent (new deploys erase changes not saved in migrations)"
 
 # Log to syslog, which is rotated (older logs automatically deleted)
 sed "/^[# ]*log_destination/clog_destination = 'syslog'" -i "$PGDATA/postgresql.conf"
@@ -26,7 +25,7 @@ echo "Starting PostgreSQL..."
 pg_ctl start -D "$PGDATA"
 
 echo "Creating database, user and schema..."
-psql -U postgres postgres << SQL
+psql -h /postgres-volume/run/postgresql  -U postgres postgres << SQL
   CREATE DATABASE $PGDATABASE;
   CREATE USER $PGUSERNAME WITH ENCRYPTED PASSWORD '$PGPASSWORD';
   GRANT ALL PRIVILEGES ON DATABASE $PGDATABASE TO $PGUSERNAME;
