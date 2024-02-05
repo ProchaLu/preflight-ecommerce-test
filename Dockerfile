@@ -32,6 +32,11 @@ COPY --from=builder /app/next.config.js ./
 
 # Copy start script and make it executable
 COPY --from=builder /app/scripts ./scripts
-RUN chmod +x /app/scripts/fly-io-start.sh
 
-CMD ["./scripts/fly-io-start.sh"]
+# Integrate the script content directly into Dockerfile
+RUN echo -e "#!/bin/bash\n\
+set -o errexit\n\
+echo \"PostgreSQL config file exists, starting database...\"\n\
+su postgres -c \"pg_ctl start -D /postgres-volume/run/postgresql/data/\"\n\
+pnpm migrate up\n\
+./node_modules/.bin/next start" > /app/scripts/fly-io-start.sh
