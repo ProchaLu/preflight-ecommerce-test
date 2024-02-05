@@ -42,7 +42,7 @@ export PGDATA=/postgres-volume/run/postgresql/data
 #   isCanceled: false,
 #   killed: false
 # }
-mkdir -p "$PGDATA"
+# mkdir -p "$PGDATA"
 
 # Only allow postgres user access to data directory
 chmod 700 "$PGDATA"
