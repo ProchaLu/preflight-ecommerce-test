@@ -5,47 +5,13 @@ set -o errexit
 
 echo "Setting up PostgreSQL on Alpine Linux..."
 
-echo "Creating folders for PostgreSQL and adding permissions for postgres user..."
+echo "Adding permissions for postgres user..."
 export PGDATA=/postgres-volume/run/postgresql/data
-# error without mkdir -p "$PGDATA"
-# ➜  preflight git:(main) ✗ pnpm docker-run https://github.com/ProchaLu/preflight-ecommerce-test
 
-# > @upleveled/preflight@5.0.2 docker-run /Users/lukas/Documents/UpLeveled/preflight/preflight
-# > docker run preflight "https://github.com/ProchaLu/preflight-ecommerce-test"
-
-# Cloning https://github.com/ProchaLu/preflight-ecommerce-test...
-# Installing dependencies...
-# Setting up PostgreSQL database on Preflight...
-# Setting up PostgreSQL on Alpine Linux...
-# Creating folders for PostgreSQL and adding permissions for postgres user...
-# chmod: /postgres-volume/run/postgresql/data: No such file or directory
-# file:///preflight/node_modules/.pnpm/execa@8.0.1/node_modules/execa/lib/error.js:60
-#                 error = new Error(message);
-#                         ^
-
-# Error: Command failed with exit code 1: bash ./scripts/alpine-postgresql-setup-and-start.sh
-#     at makeError (file:///preflight/node_modules/.pnpm/execa@8.0.1/node_modules/execa/lib/error.js:60:11)
-#     at handlePromise (file:///preflight/node_modules/.pnpm/execa@8.0.1/node_modules/execa/index.js:124:26)
-#     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-#     at async file:///preflight/clone-and-preflight.js:68:5 {
-#   shortMessage: 'Command failed with exit code 1: bash ./scripts/alpine-postgresql-setup-and-start.sh',
-#   command: 'bash ./scripts/alpine-postgresql-setup-and-start.sh',
-#   escapedCommand: 'bash "./scripts/alpine-postgresql-setup-and-start.sh"',
-#   exitCode: 1,
-#   signal: undefined,
-#   signalDescription: undefined,
-#   stdout: undefined,
-#   stderr: undefined,
-#   cwd: 'project-to-check',
-#   failed: true,
-#   timedOut: false,
-#   isCanceled: false,
-#   killed: false
-# }
-# mkdir -p "$PGDATA"
+mkdir -p "$PGDATA"
 
 # Only allow postgres user access to data directory
-chmod 700 "$PGDATA"
+chmod 0700 "$PGDATA"
 initdb -D "$PGDATA"
 
 # Update PostgreSQL config path to use volume location if app has a volume
