@@ -23,7 +23,7 @@ sed -i "s/#unix_socket_directories = '\/run\/postgresql'/unix_socket_directories
 echo "listen_addresses='*'" >> $PGDATA/postgresql.conf
 
 echo "Starting PostgreSQL..."
-pg_ctl start -D /postgres-volume/run/postgresql
+pg_ctl start -D "$PGDATA"
 
 echo "Creating database, user and schema..."
 psql -h /postgres-volume/run/postgresql  -U postgres postgres << SQL
