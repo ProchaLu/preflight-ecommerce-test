@@ -8,16 +8,9 @@ echo "Setting up PostgreSQL on Alpine Linux..."
 echo "Adding permissions for postgres user..."
 export PGDATA=/postgres-volume/run/postgresql/data
 
-if [[ ! -d "$PGDATA" ]]; then
-  echo "PGDATA directory doesn't exist. Please create it."
-  exit 1
-fi
-
 # Only allow postgres user access to data directory
 chmod 0700 "$PGDATA"
 initdb -D "$PGDATA"
-
-
 
 # Update PostgreSQL config path to use volume location if app has a volume
 sed -i "s/#unix_socket_directories = '\/run\/postgresql'/unix_socket_directories = '\/postgres-volume\/run\/postgresql'/g" /postgres-volume/run/postgresql/data/postgresql.conf || echo "PostgreSQL volume not mounted, running database as non-persistent (new deploys erase changes not saved in migrations)"
