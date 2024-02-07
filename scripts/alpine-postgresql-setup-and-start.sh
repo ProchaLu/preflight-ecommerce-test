@@ -7,9 +7,9 @@ echo "Setting up PostgreSQL on Alpine Linux..."
 
 echo "Adding permissions for postgres user..."
 export PGDATA=/postgres-volume/run/postgresql/data
+mkdir "$PGDATA"
 
 # Only allow postgres user access to data directory
-mkdir -p "$PGDATA"
 chmod 0700 "$PGDATA"
 initdb -D "$PGDATA"
 
