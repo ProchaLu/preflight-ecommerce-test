@@ -17,6 +17,8 @@ sed -i "s/#unix_socket_directories = '\/run\/postgresql'/unix_socket_directories
 
 # Log to syslog, which is rotated (older logs automatically deleted)
 # sed "/^[# ]*log_destination/clog_destination = 'syslog'" -i "$PGDATA/postgresql.conf"
+sed -i "s/^log_destination = 'syslog'/#log_destination = 'syslog'/" "$PGDATA/postgresql.conf"
+
 
 # Configure PostgreSQL to listen for connections from any address
 echo "listen_addresses='*'" >> $PGDATA/postgresql.conf
