@@ -2,18 +2,19 @@
   "name": "next-ecommerce-store",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "migrate": "ley --require tsm",
+    "migrate": "ley --require tsx/cjs",
     "start": "next start"
   },
   "dependencies": {
+    "@upleveled/ley": "^0.8.5",
     "dotenv-safe": "^9.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "ley": "^0.8.1",
     "next": "latest",
     "postgres": "^3.3.5",
     "react": "latest",
@@ -22,7 +23,7 @@
     "secure-json-parse": "^2.7.0",
     "server-only": "^0.0.1",
     "sharp": "^0.32.6",
-    "tsm": "^2.3.0"
+    "tsx": "^4.7.0"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
