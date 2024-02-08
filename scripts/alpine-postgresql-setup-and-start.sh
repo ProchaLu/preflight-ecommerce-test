@@ -10,10 +10,6 @@ export PGDATA=/postgres-volume/run/postgresql/data
 
 # Only allow postgres user access to data directory
 chmod 0700 "$PGDATA"
-chmod 0700 "$(dirname "$PGDATA")"
-
-# Change ownership of the PostgreSQL data directory and its parent directory to postgres user
-chown -R postgres:postgres "$(dirname "$PGDATA")"
 initdb -D "$PGDATA"
 
 ls -ld /postgres-volume/run/postgresql/
