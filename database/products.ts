@@ -6,10 +6,7 @@ import { Product } from '../migrations/00000-createTableProducts';
 export const getProducts = cache(async () => {
   // return products;
   const products = await sql<Product[]>`
-    SELECT
-      *
-    FROM
-      products
+    SELECT * FROM products
   `;
   return products;
 });

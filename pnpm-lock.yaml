@@ -55,9 +55,6 @@ devDependencies:
   '@ts-safeql/eslint-plugin':
     specifier: ^2.0.3
     version: 2.0.3(eslint@8.56.0)(libpg-query@15.0.2)(typescript@5.2.2)
-  '@types/dotenv-safe':
-    specifier: ^8.1.5
-    version: 8.1.5
   '@types/node':
     specifier: ^20.8.3
     version: 20.8.3
@@ -86,7 +83,7 @@ devDependencies:
     specifier: ^15.10.3
     version: 15.10.3(typescript@5.2.2)
   stylelint-config-upleveled:
-    specifier: ^1.0.7
+    specifier: ^1.0.2
     version: 1.0.7(postcss@8.4.31)(stylelint@15.10.3)
   typescript:
     specifier: ^5.2.2
@@ -1466,13 +1463,6 @@ packages:
       '@babel/types': 7.23.0
     dev: false
 
-  /@types/dotenv-safe@8.1.5:
-    resolution: {integrity: sha512-E8z+Z0+yE8eEZ8BcMnb3I31fV3ROxobooqEDRBoQDAs4lb0c9X6Va6P6z+svj/USxw4R7TErcfEuW0tk7ymaPA==}
-    dependencies:
-      '@types/node': 20.8.3
-      dotenv: 8.6.0
-    dev: true
-
   /@types/eslint@8.56.2:
     resolution: {integrity: sha512-uQDwm1wFHmbBbCZCqAlq6Do9LYwByNZHWzXppSnay9SuwJ+VRbjkbLABer54kcPnMSlG6Fdiy2yaFXm/z9Z5gw==}
     dependencies:
@@ -2819,11 +2809,6 @@ packages:
     resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
     engines: {node: '>=12'}
     dev: false
-
-  /dotenv@8.6.0:
-    resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
-    engines: {node: '>=10'}
-    dev: true
 
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}

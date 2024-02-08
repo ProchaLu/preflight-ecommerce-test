@@ -1,0 +1,44 @@
+.cookieBanner {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #f4f3f2;
+  border: 0.5px solid rgba(93, 107, 98, 0.5);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: fixed;
+  bottom: 10vh;
+  right: 40%;
+  left: 40%;
+  transition: all 0.4s;
+  z-index: 1;
+
+  p {
+    background-color: rgba(93, 107, 98, 0);
+  }
+
+  &.closed {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.open {
+    opacity: 0.8;
+    pointer-events: all;
+  }
+}
+
+.button {
+  background-color: lightgrey;
+  border: none;
+  padding: 5px 5px;
+  font-family: Nova Mono, 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+
+  &:hover {
+    background-color: rgba(93, 107, 98, 0.5);
+  }
+}
