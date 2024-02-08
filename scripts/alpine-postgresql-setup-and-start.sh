@@ -9,10 +9,9 @@ echo "Adding permissions for postgres user..."
 export PGDATA=/postgres-volume/run/postgresql/data
 
 # Only allow postgres user access to data directory
+chmod 0700 /postgres-volume/run/postgresql
 chmod 0700 "$PGDATA"
 initdb -D "$PGDATA"
-
-su chown -R postgres:postgres /postgres-volume/run/postgresql/
 
 ls -ld /postgres-volume/run/postgresql/
 ls -l /postgres-volume/run/postgresql/
