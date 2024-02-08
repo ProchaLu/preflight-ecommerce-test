@@ -9,14 +9,14 @@ echo "Adding permissions for postgres user..."
 export PGDATA=/postgres-volume/run/postgresql/data
 
 # Only allow postgres user access to data directory
-chmod 0700 "$PGDATA"
+chmod 0700 /postgres-volume/run/postgresql /postgres-volume/run/postgresql/data
 initdb -D "$PGDATA"
 
 # Update PostgreSQL config path to use volume location if app has a volume
 sed -i "s|#unix_socket_directories = '/run/postgresql'|unix_socket_directories = '/postgres-volume/run/postgresql/'|g" /postgres-volume/run/postgresql/data/postgresql.conf || echo "PostgreSQL volume not mounted, running database as non-persistent (new deploys erase changes not saved in migrations)"
 
 # Log to syslog, which is rotated (older logs automatically deleted)
-# sed "/^[# ]*log_destination/clog_destination = 'syslog'" -i "$PGDATA/postgresql.conf"
+sed "/^[# ]*log_destination/clog_destination = 'syslog'" -i "$PGDATA/postgresql.conf"
 
 # Configure PostgreSQL to listen for connections from any address
 echo "listen_addresses='*'" >> $PGDATA/postgresql.conf
