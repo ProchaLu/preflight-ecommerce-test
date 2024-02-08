@@ -14,8 +14,15 @@ initdb -D "$PGDATA"
 
 echo 'update unix socket directory'
 
+# check if file exists
+if [ -f /postgres-volume/run/postgresql/data/postgresql.conf ]; then
+  echo "file exists"
+else
+  echo "file does not exist"
+fi
+
 # Update PostgreSQL config path to use volume location if app has a volume
-sed -i "s/#unix_socket_directories = '\/run\/postgresql'/unix_socket_directories = '\/postgres-volume\/run\/postgresql/'/g" /postgres-volume/run/postgresql/data/postgresql.conf || echo "PostgreSQL volume not mounted, running database as non-persistent (new deploys erase changes not saved in migrations)"
+sed -i "s|#unix_socket_directories = '/run/postgresql'|unix_socket_directories = '/postgres-volume/run/postgresql/'|g" /postgres-volume/run/postgresql/data/postgresql.conf || echo "PostgreSQL volume not mounted, running database as non-persistent (new deploys erase changes not saved in migrations)"
 
 echo "updated with sed"
 
