@@ -12,6 +12,8 @@ export PGDATA=/postgres-volume/run/postgresql/data
 chmod 0700 "$PGDATA"
 initdb -D "$PGDATA"
 
+sudo chown -R postgres:postgres /postgres-volume/run/postgresql/
+
 ls -ld /postgres-volume/run/postgresql/
 ls -l /postgres-volume/run/postgresql/
 
