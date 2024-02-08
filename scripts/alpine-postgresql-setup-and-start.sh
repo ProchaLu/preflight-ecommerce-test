@@ -23,7 +23,7 @@ sed -i "s|#unix_socket_directories = '/run/postgresql'|unix_socket_directories =
 
 # TODO fix, after permission denied error is resolved
 # Log to syslog, which is rotated (older logs automatically deleted)
-# sed "/^[# ]*log_destination/clog_destination = 'syslog'" -i "$PGDATA/postgresql.conf"
+sed "/^[# ]*log_destination/clog_destination = 'syslog'" -i "$PGDATA/postgresql.conf"
 
 # Configure PostgreSQL to listen for connections from any address
 echo "listen_addresses='*'" >> $PGDATA/postgresql.conf
