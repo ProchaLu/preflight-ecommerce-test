@@ -7,7 +7,6 @@ import shoppingCartIcon from '../public/images/shopping-cart.svg';
 import { getCookie } from '../util/cookies';
 import { parseJson } from '../util/json';
 import { CartItem } from './cart/actions';
-import CookieBanner from './CookieBanner';
 
 export const metadata = {
   title: { default: 'Home | Covfefe', template: '%s | Covfefe' },
@@ -35,7 +34,6 @@ export default async function RootLayout({ children }: Props) {
         <link rel="apple-touch-icon" href="/favicon/icon-apple-touch.png" />
       </head>
       <body>
-        <CookieBanner />
         <header>
           <nav className="navBar">
             <Link className="hover-underline-animation" href="/">
