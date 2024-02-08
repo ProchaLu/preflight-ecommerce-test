@@ -17,8 +17,6 @@ sed -i "s/#unix_socket_directories = '\/run\/postgresql'/unix_socket_directories
 
 cat /postgres-volume/run/postgresql/data/postgresql.conf
 
-cat /postgres-volume/run/postgresql/data/.s.PGSQL.5432.lock
-
 # Log to syslog, which is rotated (older logs automatically deleted)
 # sed "/^[# ]*log_destination/clog_destination = 'syslog'" -i "$PGDATA/postgresql.conf"
 
