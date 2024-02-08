@@ -9,7 +9,7 @@ echo "Adding permissions for postgres user..."
 export PGDATA=/postgres-volume/run/postgresql/data
 
 # Only allow postgres user access to data directory
-chmod 0700 /postgres-volume/run/postgresql "$PGDATA"
+chmod 0700 /postgres-volume/run/postgresql /postgres-volume/run/postgresql/data
 initdb -D "$PGDATA"
 
 echo 'update unix socket directory'
