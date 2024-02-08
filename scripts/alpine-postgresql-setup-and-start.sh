@@ -9,11 +9,8 @@ echo "Adding permissions for postgres user..."
 export PGDATA=/postgres-volume/run/postgresql/data
 
 # Only allow postgres user access to data directory
-echo 'give permissions to postgres user'
-chmod 0700 /postgres-volume/run/postgresql
 chmod 0700 "$PGDATA"
 initdb -D "$PGDATA"
-echo 'permissions given'
 
 # Update PostgreSQL config path to use volume location if app has a volume
 sed -i "s|#unix_socket_directories = '/run/postgresql'|unix_socket_directories = '/postgres-volume/run/postgresql/'|g" /postgres-volume/run/postgresql/data/postgresql.conf || echo "PostgreSQL volume not mounted, running database as non-persistent (new deploys erase changes not saved in migrations)"
