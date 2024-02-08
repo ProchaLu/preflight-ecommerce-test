@@ -12,12 +12,16 @@ export PGDATA=/postgres-volume/run/postgresql/data
 chmod 0700 "$PGDATA"
 initdb -D "$PGDATA"
 
+# print file content from /postgres-volume/run/postgresql/data/postgresql.conf
+cat /postgres-volume/run/postgresql/data/postgresql.conf
+
 # Update PostgreSQL config path to use volume location if app has a volume
-sed -i "s/#unix_socket_directories = '\/run\/postgresql'/unix_socket_directories = '\/postgres-volume\/run\/postgresql'/g" /postgres-volume/run/postgresql/data/postgresql.conf || echo "PostgreSQL volume not mounted, running database as non-persistent (new deploys erase changes not saved in migrations)"
+sed -i "s/#unix_socket_directories = '\/run\/postgresql'/unix_socket_directories = '\/postgres-volume\/run\/postgresql/data'/g" /postgres-volume/run/postgresql/data/postgresql.conf || echo "PostgreSQL volume not mounted, running database as non-persistent (new deploys erase changes not saved in migrations)"
+
+cat /postgres-volume/run/postgresql/data/postgresql.conf
 
 # Log to syslog, which is rotated (older logs automatically deleted)
 # sed "/^[# ]*log_destination/clog_destination = 'syslog'" -i "$PGDATA/postgresql.conf"
-
 
 # Configure PostgreSQL to listen for connections from any address
 echo "listen_addresses='*'" >> $PGDATA/postgresql.conf
