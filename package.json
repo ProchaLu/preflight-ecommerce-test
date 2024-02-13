@@ -38,8 +38,8 @@
     "prettier": "^3.2.5",
     "prettier-plugin-embed": "^0.4.13",
     "prettier-plugin-sql": "^0.18.0",
-    "stylelint": "^15.10.3",
-    "stylelint-config-upleveled": "^1.0.2",
+    "stylelint": "^16.2.0",
+    "stylelint-config-upleveled": "^1.0.7",
     "typescript": "^5.2.2"
   }
 }
