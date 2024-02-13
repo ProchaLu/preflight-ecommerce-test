@@ -21,7 +21,6 @@ echo "Enabling connections on all available IP interfaces..."
 echo "listen_addresses='*'" >> "$PGDATA/postgresql.conf"
 
 echo "Starting PostgreSQL..."
-ls -l ./scripts/alpine-postgresql-setup-and-start.sh
 pg_ctl start -D "$PGDATA"
 
 echo "Creating database, user and schema..."
