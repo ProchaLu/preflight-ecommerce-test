@@ -106,18 +106,34 @@ const products: Product[] = [
 export async function up(sql: Sql) {
   for (const product of products) {
     await sql`
-      INSERT INTO products
-        (name, type, origin, flavour_profile, price, description)
+      INSERT INTO
+        products (
+          name,
+          type,
+          origin,
+          flavour_profile,
+          price,
+          description
+        )
       VALUES
-        (${product.name}, ${product.type}, ${product.origin}, ${product.flavourProfile}, ${product.price}, ${product.description})
-  `;
+        (
+          ${product.name},
+          ${product.type},
+          ${product.origin},
+          ${product.flavourProfile},
+          ${product.price},
+          ${product.description}
+        )
+    `;
   }
 }
 
 export async function down(sql: Sql) {
   for (const product of products) {
     await sql`
-      DELETE FROM products WHERE id = ${product.id}
+      DELETE FROM products
+      WHERE
+        id = ${product.id}
     `;
   }
 }
