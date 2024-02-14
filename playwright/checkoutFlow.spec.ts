@@ -6,7 +6,7 @@ test('add something to cart, go to checkout, complete input fields and go to tha
 }) => {
   await page.goto('http://localhost:3000');
 
-  await expect(page.getByRole('link', { name: 'Fail test' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Visit shop' })).toBeVisible();
 
   // click on Products
   await page.getByTestId('products-link').click();
